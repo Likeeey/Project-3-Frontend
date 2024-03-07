@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import authService from "../services/auth.service";
+import axios from "axios";
 
 function Login () {
     const [email, setEmail] = useState("");
@@ -12,23 +12,14 @@ function Login () {
 
     const navigate = useNavigate();
 
-    const { login } = authService;
+    
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
 
         const reqBody = {email, password};
 
-        login(reqBody)
-            .then((response) => {
-                saveToken(response.data.authToken);
-                authenticateUser();
-                navigate("/");
-            })
-            .catch((error) => {
-                const errorDescription = error.data.message;
-                setError(errorDescription);
-            })
+        axios.post()
     }
 
     return (
