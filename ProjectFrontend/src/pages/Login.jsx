@@ -23,7 +23,7 @@ function Login () {
             .then((response) => {
                 saveToken(response.data.authToken);
                 authenticateUser();
-                navigate("/");
+                navigate("/profile");
             })
             .catch((error) => {
                 const errorDescription = error.data.message;

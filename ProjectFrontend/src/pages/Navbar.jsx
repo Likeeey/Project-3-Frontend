@@ -1,16 +1,20 @@
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Flex, Link, Box } from "@chakra-ui/react";
+import { Image } from '@chakra-ui/react'
 
 function Navbar () {
     return (
-        <nav>
-           <div>
-                <Link to="/"><h4>Home</h4></Link>
-                <Link to="/about"><h4>About</h4></Link>
-                <Link to="/challenges"><h4>Challenges</h4></Link>
-                <Link to="/membersresults"><h4>Members Results</h4></Link>
-                <Link to="/coaches"><h4>Coaches</h4></Link>
-                <Link to="/login"><h4>Login</h4></Link>
-           </div>
-        </nav>
-    )
-}
+        <Flex p={3} bg="blue.200" justifyContent="space-between" alignItems="center">
+            <Box >
+            <Link to = {"/"} color="white" mr={2} href="/" >App name<Image src="../public/weightlifter.png" alt="logo" width={150} height={150}></Image></Link>
+            </Box>
+          <Link to = {"/challenges"} color="white" mr={100} href="challenges">Challenges</Link>
+          <Link color="white" mr={100} href="members-results">Members Results</Link>
+          <Link color="white" mr={100} href="coaches">Coaches</Link>
+          <Box>
+            <Link to = {"/login"} color="white" mr={2} href="login">Login</Link>
+          </Box>
+        </Flex>
+      );
+    };
+export default Navbar;
