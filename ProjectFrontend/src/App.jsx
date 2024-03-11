@@ -9,6 +9,7 @@ import MembersResults from './pages/MembersResults'
 import Coaches from './pages/Coaches'
 import Profile from './pages/Profile'
 import ErrorPage from './pages/ErrorPage'
+import MyPlan from './pages/MyPlan'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/members-results" element={<MembersResults />} />
         <Route path="/coaches" element={<Coaches />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/myplan" element={<MyPlan />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>

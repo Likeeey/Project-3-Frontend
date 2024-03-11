@@ -1,29 +1,32 @@
-import React from 'react'
-import {useState, useEffect} from 'react'
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import memberService from "../services/member-result.service";
 
-
-export default function MembersResults () {
+export default function MembersResults() {
     const [data, setData] = useState([]);
+    const { id } = useParams();
 
     useEffect(() => {
-        axios.get("mongodb://localhost:27017/members")
-        .then(data => setData(data.data))
-        .catch(err => console.log(err))
-    })
+        const fetchData = async () => {
+            try {
+                const response = await memberService.getAllMembers(id);
+                setData(response.data);
+            } catch (error) {
+                console.log("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, [id]); // Dependency on id to re-fetch data when id changes
 
     return (
         <div>
-            {
-                data.map((data) => {
-                    return ( 
-                    <p>{data.name}</p>,
-                    <p>{data.description}</p>,
-                    <img src="" />
-                    )
-
-                })
-            }
+            {data.map((members) => (
+                <div key={members._id}>
+                    <p>Name: {members.name}</p>
+                    <p>Description: {members.description}</p>
+                </div>
+            ))}
         </div>
-    )
+    );
 }
