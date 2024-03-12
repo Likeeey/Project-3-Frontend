@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import exerciseService from "../services/exercises.service";
+import trackingServices from "../services/tracking.service";
 
-function EditExercise(props) {
-  const [exercise, setExercise] = useState({});
-  const { id, exercises, setExercises } = props;
+function EditTracker(props) {
+  const [tracker, setTracker] = useState({});
+  const { id, trackers, setTrackers } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await exerciseService.getExercise(id);
-        setExercise(response.data);
+        const response = await trackingServices.getTracker(id);
+        setTracker(response.data);
       } catch (error) {
         console.log("Error fetching data:", error);
       }
@@ -22,53 +22,47 @@ function EditExercise(props) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setExercise((prevExercise) => ({
-      ...prevExercise,
+    setTracker((prevTracker) => ({
+      ...prevTracker,
       [name]: value
     }));
   };
 
   const handleUpdate = async () => {
     try {
-      await exerciseService.updateExercise(id, exercise);
-      console.log("Exercise updated successfully.");
-      navigate("/myplan");
+      await trackingServices.updateTracker(id, tracker);
+      console.log("Tracker updated successfully.");
+      navigate("/tracking");
     } catch (error) {
-      console.log("Error updating exercise:", error);
+      console.log("Error updating tracker:", error);
     }
   };
 
-  const handleDelete = async (exerciseToRemove) => {
-    const removeExercise = exercises.filter(exercise => exercise.id !== exerciseToRemove.id);
+  const handleDelete = async (trackerToRemove) => {
+    const removeTracker = trackers.filter(tracker => tracker.id !== trackerToRemove.id);
     try {
-      await exerciseService.deleteExercise(id);
-      console.log("Exercise deleted successfully.");
-      setExercises(removeExercise);
+      await trackingServices.deleteTracker(id);
+      console.log("Tracker deleted successfully.");
+      setTrackers(removeTracker);
     } catch (error) {
-      console.log("Error deleting exercise:", error);
+      console.log("Error deleting tracker:", error);
     }
   };
 
   return (
     <article>
       <form onSubmit={handleUpdate}>
-        <label>Name</label>
-        <input type="text" name="name" value={exercise.name || ""} onChange={handleChange} />
+        <label>Bodyweight</label>
+        <input type="text" name="bodyWeight" value={tracker.bodyWeight || ""} onChange={handleChange} />
         
-        <label>Type</label>
-        <input type="text" name="type" value={exercise.type || ""} onChange={handleChange} />
+        <label>Steps</label>
+        <input type="number" name="steps" value={tracker.steps || ""} onChange={handleChange} />
         
-        <label>Muscle</label>
-        <input type="text" name="muscle" value={exercise.muscle || ""} onChange={handleChange} />
+        <label>Duration</label>
+        <input type="text" name="duration" value={tracker.duration || ""} onChange={handleChange} />
         
-        <label>Difficulty</label>
-        <input type="text" name="difficulty" value={exercise.difficulty || ""} onChange={handleChange} />
-        
-        <label>Instructions</label>
-        <input type="text" name="instructions" value={exercise.instructions || ""} onChange={handleChange} />
-        
-        <label>Equipment</label>
-        <input type="text" name="equipment" value={exercise.equipment || ""} onChange={handleChange} />
+        <label>Kcals</label>
+        <input type="text" name="kcals" value={tracker.kcals || ""} onChange={handleChange} />
         
         <button type="submit">Update Exercise</button>
       </form>
@@ -77,4 +71,4 @@ function EditExercise(props) {
   );
 }
 
-export default EditExercise;
+export default EditTracker;

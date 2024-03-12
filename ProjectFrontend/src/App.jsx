@@ -10,6 +10,7 @@ import Coaches from './pages/Coaches'
 import Profile from './pages/Profile'
 import ErrorPage from './pages/ErrorPage'
 import MyPlan from './pages/MyPlan'
+import Tracking from './pages/Tracking'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/coaches" element={<Coaches />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/myplan" element={<MyPlan />} />
+        <Route path="/tracking" element={<Tracking />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
