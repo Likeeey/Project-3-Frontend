@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import exerciseService from "../services/exercises.service";
 
 function EditExercise(props) {
@@ -38,12 +38,12 @@ function EditExercise(props) {
     }
   };
 
-  const handleDelete = async () => {
-    
+  const handleDelete = async (exerciseToRemove) => {
+    const removeExercise = exercises.filter(exercise => exercise.id !== exerciseToRemove.id);
     try {
       await exerciseService.deleteExercise(id);
       console.log("Exercise deleted successfully.");
-      setExercises();
+      setExercises(removeExercise);
     } catch (error) {
       console.log("Error deleting exercise:", error);
     }
