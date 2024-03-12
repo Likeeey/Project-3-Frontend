@@ -9,6 +9,7 @@ const API_URL = "http://localhost:5005";
 function AuthProviderWrapper(props) {
   const [user, setUser] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   /* Save the Login's JWT Token in our Browser' Storage */
   const saveToken = (token) => {
@@ -17,6 +18,7 @@ function AuthProviderWrapper(props) {
 
   /* Function that authenticates the user --> verifies if the token is a valid one. */
   const authenticateUser = () => {
+    setIsLoading(true);
     const storedToken = localStorage.getItem("authToken");
     if (storedToken) {
       axios
@@ -26,15 +28,18 @@ function AuthProviderWrapper(props) {
         .then((response) => {
           setUser(response.data);
           setIsLoggedIn(true);
+          setIsLoading(false);
         })
         .catch(()=>{
           setUser(null);
           setIsLoggedIn(false);
+          setIsLoading(false);
         })
     }
     else {
         setUser(null);
         setIsLoggedIn(false);
+        setIsLoading(false);
     }
   };
 
@@ -54,7 +59,7 @@ function AuthProviderWrapper(props) {
     
 
   return(
-    <AuthContext.Provider value={{isLoggedIn, user, saveToken, authenticateUser, logOut}}>
+    <AuthContext.Provider value={{isLoggedIn, isLoading, user, saveToken, authenticateUser, logOut}}>
         {props.children}
     </AuthContext.Provider>
   )

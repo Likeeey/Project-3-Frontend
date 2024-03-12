@@ -11,6 +11,7 @@ import Profile from './pages/Profile'
 import ErrorPage from './pages/ErrorPage'
 import MyPlan from './pages/MyPlan'
 import Tracking from './pages/Tracking'
+import IsPrivate from './components/isPrivate'
 
 function App() {
   return (
@@ -23,9 +24,9 @@ function App() {
         <Route path="/challenges" element={<Challenges />} />
         <Route path="/members-results" element={<MembersResults />} />
         <Route path="/coaches" element={<Coaches />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/myplan" element={<MyPlan />} />
-        <Route path="/tracking" element={<Tracking />} />
+        <Route path="/profile" element={<IsPrivate><Profile /></IsPrivate>} />
+        <Route path="/myplan" element={<IsPrivate><MyPlan /></IsPrivate>} />
+        <Route path="/tracking" element={<IsPrivate><Tracking /></IsPrivate>} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
