@@ -188,8 +188,9 @@ function MyPlan() {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      {training.map((item) => (
-        <Box key={item._id} mt={4} borderWidth="1px" p={4}>
+      {training.map((item) => {
+        return(
+          <Box key={item._id} mt={4} borderWidth="1px" p={4}>
           <Text>Name: {item.name}</Text>
           <Text>Type: {item.type}</Text>
           <Text>Muscle: {item.muscle}</Text>
@@ -208,9 +209,9 @@ function MyPlan() {
             onUpdate={handleEdit}
           />
         </Box>
-      ))}
+      )})}
     </Box>
-  );
+    )
 }
 
 export default MyPlan;
