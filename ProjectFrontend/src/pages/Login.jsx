@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "../services/auth.service";
+import { Link } from "react-router-dom";
 
 function Login () {
     const [email, setEmail] = useState("");
@@ -48,6 +49,8 @@ function Login () {
                 </div>
                 {error && <p>{error}</p>}
             </form>
+            <p>You don't have an account?</p>
+            <Link to={"/signup"}>Sign Up</Link>
         </div>
     )
 }

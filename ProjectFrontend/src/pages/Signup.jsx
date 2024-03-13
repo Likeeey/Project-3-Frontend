@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
-
-const API_URL = "http://localhost:5005";
+import { Link } from "react-router-dom";
 
 
 function Signup () {
@@ -51,6 +50,8 @@ function Signup () {
                 </div>
                 {error && <p>{error}</p>}
             </form>
+            <p>Already got an account?</p>
+            <Link to={"/login"}>Login</Link>
         </div>
     )
 }

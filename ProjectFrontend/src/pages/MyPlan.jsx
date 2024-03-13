@@ -188,7 +188,6 @@ function MyPlan() {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      {/* Display existing workouts */}
       {training.map((item) => (
         <Box key={item._id} mt={4} borderWidth="1px" p={4}>
           <Text>Name: {item.name}</Text>

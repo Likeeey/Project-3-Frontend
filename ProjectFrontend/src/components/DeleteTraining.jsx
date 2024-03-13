@@ -14,6 +14,7 @@ export default function DeleteTraining({ trainingId, onDelete }) {
                 console.log("Error deleting training:", error);
             });
     };
+    
 
     return (
         <div>
