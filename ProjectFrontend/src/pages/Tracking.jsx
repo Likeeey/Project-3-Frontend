@@ -34,7 +34,7 @@ export default function Tracking() {
     setTrackers(trackers.filter((item) => item.trackingid !== trackingid));
     trackingServices
       .deleteTracker(trackingid)
-      .then((response) => {
+      .then(() => {
         console.log("Tracking deleted successfully!");
       })
       .catch((error) => {
@@ -81,8 +81,9 @@ export default function Tracking() {
         const fetchData = async () => {
           try {
             const response = await trackingServices.getAllTrackers();
-            console.log(response.data);
+
             setTrackers(response.data);
+            console.log(response.data);
           } catch (error) {
             console.log("Error fetching data:", error);
           }
@@ -157,7 +158,8 @@ export default function Tracking() {
             </ModalFooter>
           </ModalContent>
         </Modal>
-        {trackers.map((item) => (
+        {trackers.map((item) => {
+          return(
           <Box key={item._id}  mt={4} borderWidth="1px" p={4}>
             <Text>Bodyweight: {item.bodyWeight}</Text>
             <Text>Steps:{item.steps}</Text>
@@ -173,7 +175,8 @@ export default function Tracking() {
             onUpdate={handleEdit}
           />
           </Box>
-        ))}
+          )
+        })}
       </Box>
     );
   };
