@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import trackingServices from "../services/tracking.service";
 import AddTrack from "../components/AddTracker"
+import Edit from "../components/Edit"
 
 function Tracking () {
     const [tracker, setTracker] = useState([]);

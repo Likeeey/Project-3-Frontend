@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Edit from "../components/Edit";
 
 /* Import Axios Service */
 import trackingServices from "../services/tracking.service";
@@ -46,7 +45,7 @@ function AddTracker(props) {
       <button type="submit">Add Training Tracker</button>
     </form>
     
-  );<Edit id={id} tracker={tracker} setTracker={setTracker}/>
+  );
 }
 
 export default AddTracker;
