@@ -4,7 +4,7 @@ import axios from "axios";
 // Initializing Context
 const AuthContext = React.createContext();
 
-const API_URL = "https://project-3-backend-h5nr.onrender.com"
+const API_URL = "https://project-3-backend-1q8n.onrender.com"
 
 function AuthProviderWrapper(props) {
   const [user, setUser] = useState("");

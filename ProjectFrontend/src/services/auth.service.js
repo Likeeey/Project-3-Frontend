@@ -3,7 +3,7 @@ import axios from "axios";
 class AuthService {
   constructor() {
     this.api = axios.create({
-      baseURL: import.meta.env.VITE_SERVER_URL || "https://project-3-frontend-ten.vercel.app",
+      baseURL: "https://project-3-backend-1q8n.onrender.com",
     });
 
     this.api.interceptors.request.use((config) => {
