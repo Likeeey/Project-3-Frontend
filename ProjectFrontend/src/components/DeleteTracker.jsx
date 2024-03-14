@@ -2,7 +2,8 @@ import React from "react";
 import trackerServices from "../services/tracking.service"
 
 export default function DeleteTracker({ trackingId, onDelete }) {
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.preventDefault();
         console.log("Deleting tracker with ID:", trackingId);
         trackerServices
             .deleteTracker(trackingId)

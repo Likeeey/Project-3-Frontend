@@ -66,9 +66,9 @@ export default function Tracking() {
     console.log("Updated training data:", updatedTrackerData);
     trackingServices
       .updateTracker(trackerId, updatedTrackerData)
-      .then(() => {
+      .then(() => location.reload(true))/* {
         console.log("Tracker updated successfully.");
-      })
+      }) */
       .catch((error) => {
         console.log("Error updating tracker:", error);
       })
@@ -211,7 +211,7 @@ export default function Tracking() {
               kcals={item.kcals}
               onUpdate={handleEdit}
             />
-          </Box>
+            </Box>
         );
       })}
     </Box>

@@ -60,9 +60,9 @@ function MyPlan() {
     console.log("Updated training data:", updatedTrainingData);
     trainingServices
       .updateTraining(trainingId, updatedTrainingData)
-      .then(() => {
+      .then(() => location.reload(true)) /* { 
         console.log("Training updated successfully.");
-      })
+      }) */
       .catch((error) => {
         console.log("Error updating training:", error);
       })

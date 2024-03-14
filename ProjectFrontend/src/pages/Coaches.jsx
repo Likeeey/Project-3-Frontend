@@ -29,6 +29,8 @@ export default function MyPlan() {
                     <p>Nationality: {coach.nationality}</p>
                     <p>Language: {coach.languages}</p>
                     <p>Description: {coach.description}</p>
+                    {coach.gender === "Male"}
+                    <img>{coach.img1}</img>
                 </div>
             ))}
         </div>
