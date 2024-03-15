@@ -84,14 +84,17 @@ function MyPlan() {
     console.log("Updated training data:", updatedTrainingData);
     trainingServices
       .updateTraining(trainingId, updatedTrainingData)
-      .then(() => location.reload())
+      .then(() => {
+        console.log("Training updated successfully.");
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      })
       .catch((error) => {
         console.log("Error updating training:", error);
-      })
-      .finally(() => {
-        console.log("Page reloaded.");
       });
   };
+  
 
   const handleCreate = () => {
     trainingServices

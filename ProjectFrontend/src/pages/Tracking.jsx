@@ -70,12 +70,14 @@ export default function Tracking() {
     );
     trackingServices
       .updateTracker(trackerId, updatedTrackerData)
-      .then(() => location.reload(true))
+      .then(() => {
+        console.log("Tracker updated successfully.");
+        setTimeout(() => {
+          location.reload(true);
+        }, 1000);
+      })
       .catch((error) => {
         console.log("Error updating tracker:", error);
-      })
-      .finally(() => {
-        console.log("Page reloaded.");
       });
   };
 
@@ -125,7 +127,7 @@ export default function Tracking() {
             <Stack spacing={10} mb={5}>
               <Input
                 type="text"
-                placeholder="Bodyweight"
+                placeholder="Bodyweight in Kg"
                 value={newTracker.bodyWeight}
                 onChange={(e) =>
                   setNewTracker({ ...newTracker, bodyWeight: e.target.value })
@@ -143,7 +145,7 @@ export default function Tracking() {
               />
               <Input
                 type="text"
-                placeholder="Duration"
+                placeholder="Duration in minutes"
                 value={newTracker.duration}
                 onChange={(e) =>
                   setNewTracker({ ...newTracker, duration: e.target.value })
