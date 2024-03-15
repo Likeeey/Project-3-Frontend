@@ -58,7 +58,7 @@ export default function MembersResults() {
                                 <Text>{member.description.substring(0, 70)}...</Text>
                             </CardBody>
                             <CardFooter position="absolute" bottom="-px" left="-7px">
-                                <Button onClick={() => handleOpenModal(member)} colorScheme='orange'>Testimony</Button>
+                                <Button onClick={() => handleOpenModal(member)} style={{ backgroundColor: '#FBD38D' }} color={"white"}>Testimony</Button>
                             </CardFooter>
                         </Card>
                     </GridItem>
@@ -78,7 +78,7 @@ export default function MembersResults() {
                         )}
                     </ModalBody>
                     <ModalFooter>
-                        <Button colorScheme="orange" mr={3} onClick={handleCloseModal}>
+                        <Button style={{ backgroundColor: '#FBD38D' }} color={"white"} mr={3} onClick={handleCloseModal}>
                             Close
                         </Button>
                     </ModalFooter>

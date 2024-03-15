@@ -1,5 +1,7 @@
 import React from "react";
-import trackerServices from "../services/tracking.service"
+import { Button, Box } from "@chakra-ui/react";
+import { CloseIcon } from "@chakra-ui/icons";
+import trackerServices from "../services/tracking.service";
 
 export default function DeleteTracker({ trackingId, onDelete }) {
     const handleDelete = (e) => {
@@ -17,8 +19,20 @@ export default function DeleteTracker({ trackingId, onDelete }) {
     };
 
     return (
-        <div>
-            <button onClick={handleDelete}>Delete Tracker</button>
-        </div>
+        <Box position="relative">
+            <Button
+                position="absolute"
+                bottom="0"
+                right="0"
+                colorScheme="red"
+                variant="ghost"
+                fontSize={"30px"}
+                onClick={handleDelete}
+                aria-label="Delete"
+                mr={-640}
+            >
+                <CloseIcon />
+            </Button>
+        </Box>
     );
 }

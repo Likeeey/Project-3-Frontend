@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import trainingServices from "../services/training.service";
 
 export default function AddTraining(props) {
@@ -25,7 +24,7 @@ export default function AddTraining(props) {
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
             <label>Name: </label>
-            <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" name="name" value={name} color="orange" onChange={(e) => setName(e.target.value)} />
             <label>Type: </label>
             <input type="text" name="type" value={type} onChange={(e) => setType(e.target.value)} />
             <label>Muscle: </label>
